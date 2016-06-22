@@ -1,0 +1,11 @@
+{
+    "image_loc": "http://image.location/image.jpg",
+    "temp_loc": "/temp/location/image.jpg",
+    "server_hostname": "server.host.name",
+    "server_img_loc": "/remote/location/image.jpg",
+    "user": "username",
+    "pkey": "/pkey/location/pkey.pem",
+    "pswd": "password",
+    "using_pkey": true,
+    "verbose": false
+}
