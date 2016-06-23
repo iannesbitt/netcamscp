@@ -87,6 +87,7 @@ else:
             print("done.")
         scp.close()
         ssh.close()
+        SUCCESS = True
         if VERBOSE:
             print("upload successful to " + SERVER)
     except IOError:
@@ -98,7 +99,7 @@ finally:
         time.sleep(2)
     now = datetime.now()
     now = now.strftime('%Y/%m/%d %H:%M:%S %Z')
-    if success:
+    if SUCCESS:
         print(now + " - Success.")
     else:
         if VERBOSE:
