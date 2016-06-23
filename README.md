@@ -4,10 +4,10 @@ Local network webcam image retriever and uploader intended to work with EC2 PEM 
 ## Setup
 
 #### Installation on Unix/Linux
-Unzip this package to a directory you have read, write, and execute access to, like your home directory `~/`. Ensure the shebang (the directory string at the beginning of the python executable, starting with `#!`) points to the directory specified by the `which python` command in your terminal. By default, it is set to `#!/usr/local/bin/python`, which is a pretty standard directory for a Unix python version installed with Homebrew, but yours may be different. Linux users: you may have success using `#!/usr/bin/env python`. Proceed to the **Settings** section.
+Unzip this package to a directory you have read, write, and execute access to, like your home directory `~/`. Ensure the shebang (the directory string at the beginning of the python executable, starting with `#!`) points to the directory specified by the `which python` command in your terminal. By default, it is set to `#!/usr/local/bin/python`, which is a pretty standard directory for a Unix python version installed with Homebrew, but yours may be different. Linux users: you may have success using `#!/usr/bin/env python`. Proceed to the **[Settings](#settings)** section.
 
 #### Installation on Windows
-Unzip this package to a directory you have read, write, and execute access to, like your home directory. Proceed to the **Settings** section.
+Unzip this package to a directory you have read, write, and execute access to, like your home directory. Proceed to the **[Settings](#settings)** section.
 
 #### Settings
 You must have a `settings.json` file at the root of this project, and each field must be filled out with correct settings in order for this script to operate properly. The settings file is populated with seven string fields and one boolean.
