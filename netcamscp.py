@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # This Source Code Form is subject to the terms of the Mozilla Public
@@ -17,7 +17,7 @@ import time
 from datetime import datetime
 import paramiko
 from scp import SCPClient
-
+from PIL import Image
 
 BASEPATH = os.path.dirname(os.path.abspath(__file__))
 JSONPATH = os.path.abspath(os.path.join(BASEPATH, "settings.json"))
@@ -54,17 +54,21 @@ def download_image(url):
     download an image
     """
     image = urllib.urlopen(url)
-    output = open(os.path.basename(LOCAL), "wb")
-    output.write(image.read())
-    output.close()
+    with open(os.path.basename(LOCAL), "wb") as output:
+        output.write(image.read())
+    output = Image.open(LOCAL)
+    output.save(LOCAL, optimize=True, quality=85)
 
-os.chdir(os.path.abspath(LOCAL))  # download location
+os.chdir(os.path.split(LOCAL)[0])  # download location
 try:
     url = str(IMAGE)
     download_image(url)  # uses the function defined above to download the image
+    size = str(os.path.getsize(LOCAL)/1024)
+    if VERBOSE:
+        print("size: " + size + "kb")
 except IOError:  # urllib raises an IOError for a 404 error, when the image doesn't exist
     print str("error fetching image.")
-    
+
 else:
     if VERBOSE:
         print("image downloaded.")
@@ -102,7 +106,7 @@ finally:
     now = datetime.now()
     now = now.strftime('%Y/%m/%d %H:%M:%S %Z')
     if SUCCESS:
-        print(now + " - Success.")
+        print(now + " - Success. " + size + "kb")
     else:
         if VERBOSE:
             print(now + " - Failure.")
