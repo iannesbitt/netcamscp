@@ -12,6 +12,7 @@ Runfile for netcamscp
 
 import urllib
 import os
+import json
 from datetime import datetime
 import paramiko
 from scp import SCPClient
