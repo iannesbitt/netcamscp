@@ -53,11 +53,11 @@ def download_image(url):
     download an image
     """
     image = urllib.urlopen(url)
-    output = open("img.jpg", "wb")
+    output = open(os.path.basename(LOCAL), "wb")
     output.write(image.read())
     output.close()
 
-os.chdir(LOCAL)  # download location
+os.chdir(os.path.abspath(LOCAL))  # download location
 try:
     url = str(IMAGE)
     download_image(url)  # uses the function defined above to download the image
